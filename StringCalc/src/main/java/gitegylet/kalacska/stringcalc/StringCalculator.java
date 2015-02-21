@@ -5,6 +5,8 @@
  */
 package gitegylet.kalacska.stringcalc;
 
+import java.io.IOException;
+
 /**
  *
  * @author Patrik
@@ -14,14 +16,16 @@ public class StringCalculator {
     private int osszeg;
     private String[] tomb;
 
-    int add(String numbers) {
-        if (numbers.equals("")) {
-            osszeg=0;
-        }
+    int add(String numbers) throws IOException {
+        
+
+    if (numbers.equals("")) {
+            osszeg = 0;
+    }
         else{
             for (int i = 0; i < numbers.length(); i++) {
-                tomb=numbers.split(",");
-            }
+            tomb = numbers.split("\\W");
+        }
             
             int n=tomb.length;
             int [] szamok=new int[n];

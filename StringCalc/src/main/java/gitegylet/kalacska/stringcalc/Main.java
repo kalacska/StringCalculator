@@ -5,13 +5,15 @@
  */
 package gitegylet.kalacska.stringcalc;
 
+import java.io.IOException;
+
 /**
  *
  * @author Patrik
  */
 public class Main {
-    public static void main(String[] args){
-        String numbers="5,15,40";
+    public static void main(String[] args) throws IOException{
+        String numbers="5|15|40";
         StringCalculator kalkulator=new StringCalculator();
         kalkulator.add(numbers);
     }
