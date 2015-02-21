@@ -12,7 +12,7 @@ package gitegylet.kalacska.stringcalc;
 public class StringCalculator {
     
     private int osszeg;
-    private int[] tomb;
+    private String[] tomb;
 
     int add(String numbers) {
         if (numbers.equals("")) {
@@ -20,12 +20,20 @@ public class StringCalculator {
         }
         else{
             for (int i = 0; i < numbers.length(); i++) {
-                
+                tomb=numbers.split(",");
+            }
+            
+            int n=tomb.length;
+            int [] szamok=new int[n];
+            
+            for (int i = 0; i < tomb.length; i++) {
+                szamok[i]=Integer.parseInt(tomb[i]);
+                osszeg=osszeg+szamok[i]; 
             }
         }
         
         
-        System.out.println(Integer.toString(osszeg));
+        System.out.println("A számok összege: "+Integer.toString(osszeg));
         return osszeg;
     }
     

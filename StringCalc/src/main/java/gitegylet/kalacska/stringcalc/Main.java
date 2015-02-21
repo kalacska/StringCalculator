@@ -11,7 +11,7 @@ package gitegylet.kalacska.stringcalc;
  */
 public class Main {
     public static void main(String[] args){
-        String numbers="";
+        String numbers="5,15,40";
         StringCalculator kalkulator=new StringCalculator();
         kalkulator.add(numbers);
     }
