@@ -15,6 +15,7 @@ public class StringCalculator {
     
     private int osszeg;
     private String[] tomb;
+    private int m;
 
     int add(String numbers) throws IOException {
         
@@ -24,7 +25,8 @@ public class StringCalculator {
     }
         else{
             for (int i = 0; i < numbers.length(); i++) {
-            tomb = numbers.split("\\W");
+               //tomb = numbers.split("\\W");
+               tomb = numbers.split("(,)|(\\|)|(\\;)|(\\/)|(\\.)");
         }
             
             int n=tomb.length;
@@ -32,13 +34,46 @@ public class StringCalculator {
             
             for (int i = 0; i < tomb.length; i++) {
                 szamok[i]=Integer.parseInt(tomb[i]);
-                osszeg=osszeg+szamok[i]; 
+                if (szamok[i]<0) {
+                    m=m+1;
+                }
+                else{
+                    osszeg=osszeg+szamok[i]; 
+                }
             }
         }
+    
         
+        if (m>0) {
+            vizsgal();
+            System.out.println("");
+        }
+        else{
+            System.out.println("A számok összege: "+Integer.toString(osszeg));
+            return osszeg;
+        }
         
-        System.out.println("A számok összege: "+Integer.toString(osszeg));
-        return osszeg;
+        return 0;
+    }
+
+    private void vizsgal() {
+        
+        int[] negativok=new int[m];
+        
+        try {
+            for (int i = 0; i < m; i++) {
+                if (Integer.parseInt(tomb[i])<0) {
+                    negativok[i]=Integer.parseInt(tomb[i]);
+                }
+            }
+            throw new Exception();
+        } catch (Exception e) {
+            System.out.println("Negatives not allowed: ");
+            for (int i = 0; i < m; i++) {
+                System.out.print(Integer.toString(negativok[i])+", ");
+            }
+            System.out.println("");
+        }
     }
     
 }
