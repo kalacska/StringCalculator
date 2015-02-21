@@ -11,4 +11,22 @@ package gitegylet.kalacska.stringcalc;
  */
 public class StringCalculator {
     
+    private int osszeg;
+    private int[] tomb;
+
+    int add(String numbers) {
+        if (numbers.equals("")) {
+            osszeg=0;
+        }
+        else{
+            for (int i = 0; i < numbers.length(); i++) {
+                
+            }
+        }
+        
+        
+        System.out.println(Integer.toString(osszeg));
+        return osszeg;
+    }
+    
 }
