@@ -5,7 +5,9 @@
  */
 package gitegylet.kalacska.stringcalc;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
@@ -16,18 +18,19 @@ public class StringCalculator {
     private int osszeg;
     private String[] tomb;
     private int m;
+    private final String DEFAULT_ELVALASZTO=",";
 
-    int add(String numbers) throws IOException {
+    int add(String numbers, String elvalaszto) {
         
 
     if (numbers.equals("")) {
             osszeg = 0;
     }
         else{
-            for (int i = 0; i < numbers.length(); i++) {
+            
                //tomb = numbers.split("\\W");
-               tomb = numbers.split("(,)|(\\|)|(\\;)|(\\/)|(\\.)");
-        }
+               //tomb = numbers.split("(,)|(\\|)|(\\;)|(\\/)|(\\.)");
+               tomb = numbers.split(elvalaszto);
             
             int n=tomb.length;
             int [] szamok=new int[n];
@@ -55,22 +58,27 @@ public class StringCalculator {
         
         return 0;
     }
+    
+    int add(String numbers){
+       return this.add(numbers, DEFAULT_ELVALASZTO);
+    }
 
     private void vizsgal() {
         
-        int[] negativok=new int[m];
+        //int[] negativok=new int[m];
+        List<Integer> negativok=new ArrayList<>();
         
         try {
-            for (int i = 0; i < m; i++) {
+            for (int i = 0; i < m+1; i++) {
                 if (Integer.parseInt(tomb[i])<0) {
-                    negativok[i]=Integer.parseInt(tomb[i]);
+                    negativok.add(Integer.parseInt(tomb[i]));
                 }
             }
             throw new Exception();
         } catch (Exception e) {
             System.out.println("Negatives not allowed: ");
-            for (int i = 0; i < m; i++) {
-                System.out.print(Integer.toString(negativok[i])+", ");
+            for (int negativ : negativok) {
+                System.out.print(negativ+", ");
             }
             System.out.println("");
         }

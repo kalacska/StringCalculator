@@ -13,10 +13,11 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException{
-        String numbers="5;15;40";
-        int szam;
+        String numbers="5;5;5";
+        String elvalaszto=";";
         StringCalculator kalkulator=new StringCalculator();
-        kalkulator.add(numbers);
+        kalkulator.add(numbers,elvalaszto);
+        //kalkulator.add(numbers);
         //A metódus helyes összeget ad vissza ha csak pozitívak vannak, ha van negatív 0-át ad vissza!
     }
 }
